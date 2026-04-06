@@ -4,10 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Shipments;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SaveShipmentRequest;
+use App\Repositories\ShipmentsRepository;
 use Illuminate\Http\Request;
 
 class ShipmentController extends Controller
 {
+    private $shipmentsRepo;
+
+    public function __construct()
+    {
+        $this->shipmentsRepo = new ShipmentsRepository();
+    }
     /**
      * Display a listing of the resource.
      */
@@ -28,9 +36,10 @@ class ShipmentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SaveShipmentRequest $request)
     {
-        //
+        $this->shipmentsRepo->createNew($request);
+        return redirect()->back();
     }
 
     /**
