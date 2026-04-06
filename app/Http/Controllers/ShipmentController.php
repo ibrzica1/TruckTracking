@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SaveShipmentRequest;
 use App\Repositories\ShipmentsRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ShipmentController extends Controller
 {
@@ -21,7 +22,9 @@ class ShipmentController extends Controller
      */
     public function index()
     {
-        $shipments = Shipments::all();
+        $shipments = Cache::remember('allShipments',300,function() {
+            return Shipments::orderBy('id','desc')->take(5)->get();
+        });
         return  view('shipments.index',compact('shipments'));   
     }
 
