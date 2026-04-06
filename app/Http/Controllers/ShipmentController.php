@@ -45,9 +45,9 @@ class ShipmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Shipments $shipments)
+    public function show(Shipments $shipment)
     {
-        
+        return view('shipments.show', compact('shipment'));
     }
 
     /**

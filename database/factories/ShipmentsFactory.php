@@ -30,8 +30,10 @@ class ShipmentsFactory extends Factory
             'price' => $this->faker->numberBetween(200,5000),
 
             'status' => $this->faker->randomElement([
-                'active',
-                'inactive',
+                'in_progress',
+                'unnasigned',
+                'completed',
+                'problem'
             ]),
 
             'user_id' => User::factory(),
