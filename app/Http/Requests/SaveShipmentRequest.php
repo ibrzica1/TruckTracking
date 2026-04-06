@@ -27,7 +27,7 @@ class SaveShipmentRequest extends FormRequest
 
             'price' => 'required|numeric|min:0',
 
-            'status' => 'required|in:'. implode(',',Shipments::STATUS),
+            'status' => 'required|in:in_progress,unnasigned,completed,problem',
 
             'user_id' => 'required|exists:users,id',
 
