@@ -2,8 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Product;
-use App\Models\Shipments;
+use App\Models\Shipment;
 
 class ShipmentsRepository
 {
@@ -11,7 +10,7 @@ class ShipmentsRepository
 
     public function __construct()
     {
-        $this->shipmentModel = new Shipments();
+        $this->shipmentModel = new Shipment();
     }
 
    public function createNew($request)

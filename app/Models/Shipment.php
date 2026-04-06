@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 
 use function PHPUnit\Framework\throwException;
 
-class Shipments extends Model
+class Shipment extends Model
 {
     use HasFactory;
+
+    protected $table = 'shipment';
     
     protected $fillable = [
         'title',

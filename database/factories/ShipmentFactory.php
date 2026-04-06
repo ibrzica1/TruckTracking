@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\Shipments;
+use App\Models\Shipment;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Shipments>
+ * @extends Factory<Shipment>
  */
-class ShipmentsFactory extends Factory
+class ShipmentFactory extends Factory
 {
     /**
      * Define the model's default state.

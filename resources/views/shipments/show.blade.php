@@ -35,10 +35,10 @@
             <p>
                 <strong>Status:</strong>
                 <span class="badge 
-                    @if($shipment->status == \App\Models\Shipments::STATUS_IN_PROGRESS) bg-warning
-                    @elseif($shipment->status == \App\Models\Shipments::UNNASIGNED) bg-secondary
-                    @elseif($shipment->status == \App\Models\Shipments::COMPLETED) bg-success
-                    @elseif($shipment->status == \App\Models\Shipments::PROBLEM) bg-danger
+                    @if($shipment->status == \App\Models\Shipment::STATUS_IN_PROGRESS) bg-warning
+                    @elseif($shipment->status == \App\Models\Shipment::UNNASIGNED) bg-secondary
+                    @elseif($shipment->status == \App\Models\Shipment::COMPLETED) bg-success
+                    @elseif($shipment->status == \App\Models\Shipment::PROBLEM) bg-danger
                     @endif
                 ">
                     {{ str_replace('_', ' ', $shipment->status) }}
