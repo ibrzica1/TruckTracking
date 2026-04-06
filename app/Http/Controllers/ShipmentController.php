@@ -22,8 +22,8 @@ class ShipmentController extends Controller
      */
     public function index()
     {
-        $shipments = Cache::remember('allShipments',300,function() {
-            return Shipments::orderBy('id','desc')->take(5)->get();
+        $shipments = Cache::remember('unnasignedShipments',300,function() {
+            return Shipments::where('status',Shipments::UNNASIGNED)->get();
         });
         return  view('shipments.index',compact('shipments'));   
     }
