@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Shipments;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -26,7 +27,7 @@ class SaveShipmentRequest extends FormRequest
 
             'price' => 'required|numeric|min:0',
 
-            'status' => 'required|in:pending,confirmed,cancelled',
+            'status' => 'required|in:'. implode(',',Shipments::STATUS),
 
             'user_id' => 'required|exists:users,id',
 

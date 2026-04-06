@@ -20,4 +20,8 @@ class Shipments extends Model
         'user_id',
         'details'
     ];
+
+    const STATUS = [
+        'in_progress','unnasigned','completed','problem'
+    ];
 }

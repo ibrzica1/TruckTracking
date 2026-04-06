@@ -49,9 +49,10 @@
             <div class="col-md-6 mb-3">
                 <label class="form-label">Status</label>
                 <select name="status" class="form-control">
-                    <option value="pending">Pending</option>
-                    <option value="confirmed">Confirmed</option>
-                    <option value="cancelled">Cancelled</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="unnasigned">Unnasigned</option>
+                    <option value="completed">Completed</option>
+                    <option value="problem">Problem</option>
                 </select>
             </div>
 

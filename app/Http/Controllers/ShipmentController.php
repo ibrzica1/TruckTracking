@@ -38,8 +38,8 @@ class ShipmentController extends Controller
      */
     public function store(SaveShipmentRequest $request)
     {
-        $this->shipmentsRepo->createNew($request);
-        return redirect()->back();
+        $this->shipmentsRepo->createNew($request->validated());
+        return redirect()->route('shipments.index');
     }
 
     /**
