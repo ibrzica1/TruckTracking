@@ -13,7 +13,8 @@ class ShipmentController extends Controller
      */
     public function index()
     {
-        //
+        $shipments = Shipments::all();
+        return  view('welcome',compact('shipments'));   
     }
 
     /**
@@ -37,7 +38,7 @@ class ShipmentController extends Controller
      */
     public function show(Shipments $shipments)
     {
-        //
+        
     }
 
     /**
