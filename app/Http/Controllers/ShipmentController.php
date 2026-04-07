@@ -26,7 +26,7 @@ class ShipmentController extends Controller
         $shipments = Cache::remember('unnasignedShipments',300,function() {
             return Shipment::where('status',Shipment::UNNASIGNED)->get();
         });
-        return  view('shipments.index',compact('shipments'));   
+        return  view('welcome',compact('shipments'));   
     }
 
     /**

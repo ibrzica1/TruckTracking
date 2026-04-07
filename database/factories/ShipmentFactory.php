@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Shipment>
+ * @extends Factory<Shipment>--dev
  */
 class ShipmentFactory extends Factory
 {
