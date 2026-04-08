@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NewAvatarRequest;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -21,9 +22,9 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function changeAvatar(Request $request)
+    public function changeAvatar(NewAvatarRequest $request)
     {
-        dd($request->file('image'));
+        dd($request->validated());
     }
 
     /**
