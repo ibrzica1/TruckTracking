@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\NewAvatarRequest;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Repositories\UserRepository;
+use Illuminate\Container\Attributes\Auth as AttributesAuth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +26,10 @@ class ProfileController extends Controller
 
     public function changeAvatar(NewAvatarRequest $request)
     {
-        dd($request->validated());
+        $test = $request->file('image_profile')
+                ->store('images','public');
+        $fileName = basename($test);
+        $request->user()->update(['avatar' => $fileName]);
     }
 
     /**
