@@ -16,7 +16,7 @@
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="max-w-xl">
 
-                    <form action="/" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('profile.change.avatar')}}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="mb-4">

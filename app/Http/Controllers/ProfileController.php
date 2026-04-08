@@ -21,6 +21,11 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function changeAvatar(Request $request)
+    {
+        dd($request->file('image'));
+    }
+
     /**
      * Update the user's profile information.
      */
