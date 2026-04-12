@@ -8,10 +8,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
+
 use Illuminate\View\View;
-use Intervention\Image\Drivers\Gd\Driver;
-use Intervention\Image\ImageManager;
+
 
 class ProfileController extends Controller
 {
@@ -35,15 +34,10 @@ class ProfileController extends Controller
         /*$test = $request->file('image_profile')
                 ->store('images/avatars','public');
         $fileName = basename($test);*/
-
-        $name = uniqid().".webp";
+        
         $file = $request->file('image_profile');
-        $gd = new Driver();
-        $manager = new ImageManager($gd);
-
-        $image = $manager->read($file)->toWebp(90 /*Quality of Image*/);
-        Storage::disk('public')->put('images/avatars/'.$name, (string) $image);
-        $request->user()->update(['avatar' => $name]);
+        $name = $request->user()->uploadAvatar($file);
+        $request->user()->update(["avatar" => $name]);
 
         return redirect()->back();
     }
