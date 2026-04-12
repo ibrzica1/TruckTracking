@@ -32,10 +32,10 @@
                             >
                         </div>
 
-                        @if(auth()->user()->image)
+                        @if(auth()->user()->avatar)
                             <div class="mb-4">
                                 <p class="text-sm text-gray-500 mb-2">Current Image:</p>
-                                <img src="{{ asset('storage/' . auth()->user()->image) }}" 
+                                <img src="{{ asset('storage/images/avatars/' . auth()->user()->avatar) }}" 
                                     class="w-24 h-24 rounded-full object-cover">
                             </div>
                         @endif
