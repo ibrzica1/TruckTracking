@@ -27,7 +27,8 @@ class ProfileController extends Controller
     public function changeAvatar(NewAvatarRequest $request)
     {
         $test = $request->file('image_profile')
-                ->store('images','public');
+                ->store('images/avatars','public');
+                
         $fileName = basename($test);
         $request->user()->update(['avatar' => $fileName]);
     }
