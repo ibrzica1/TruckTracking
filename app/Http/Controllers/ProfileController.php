@@ -9,8 +9,11 @@ use Illuminate\Container\Attributes\Auth as AttributesAuth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Psy\Readline\Hoa\FileReadWrite;
 
 class ProfileController extends Controller
 {
@@ -30,6 +33,10 @@ class ProfileController extends Controller
                 ->store('images/avatars','public');
                 
         $fileName = basename($test);
+        $oldFileName = $request->user()->avatar;
+        if($oldFileName){
+            Storage::disk('public')->delete("images/avatars/{$oldFileName}");
+        }
         $request->user()->update(['avatar' => $fileName]);
     }
 
