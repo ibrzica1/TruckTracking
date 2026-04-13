@@ -58,7 +58,7 @@
 
             <div class="col-md-6 mb-3">
                 <label for="documents">Documents</label>
-                <input type="file" name="documents" class="form-control" required multiple>
+                <input type="file" name="documents[]" class="form-control" required multiple>
             </div>
 
             <div class="col-md-6 mb-3">

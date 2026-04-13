@@ -31,6 +31,10 @@ class SaveShipmentRequest extends FormRequest
             'user_id' => 'required|exists:users,id',
 
             'details' => 'nullable|string',
+
+            'documents' => 'required|array',
+
+            'document.*' => 'file|mimes:jpg,jpeg,png,webp,pdf,doc,docx|max:10240'
         ];
     }
 }

@@ -42,6 +42,20 @@ class ShipmentController extends Controller
      */
     public function store(SaveShipmentRequest $request)
     {
+        $fileTypes = [
+            'application/pdf',
+            'application/msword',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        ];
+        foreach($request->file('documents') as $document){
+            if(str_starts_with($document->getMimeType(),'image/') ){
+                dd('Its a picture');
+            }elseif(in_array($document->getMimeType(),$fileTypes)){
+                dd('Its a document');
+            }else{
+                dd('Not allowed');
+            }
+        }
         $this->shipmentsRepo->createNew($request->validated());
         return redirect()->route('shipments.index');
     }
