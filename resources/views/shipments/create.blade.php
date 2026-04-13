@@ -9,7 +9,7 @@
 <div class="container mt-4">
     <h1 class="mb-4">Create Shipment</h1>
 
-    <form action="{{ route('shipments.store') }}" method="POST">
+    <form action="{{ route('shipments.store') }}" method="POST" enctype="multipart/form-data">
         @if($errors->any())
             <p>Error: {{$errors->first()}}</p>
         @endif
@@ -54,6 +54,11 @@
                     <option value="completed">Completed</option>
                     <option value="problem">Problem</option>
                 </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="documents">Documents</label>
+                <input type="file" name="documents" class="form-control" required multiple>
             </div>
 
             <div class="col-md-6 mb-3">
