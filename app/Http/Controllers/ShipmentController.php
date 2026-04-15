@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SaveShipmentRequest;
 use App\Models\Shipment;
+use App\Repositories\ShipmentFileRepository;
 use App\Repositories\ShipmentsRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -13,10 +14,12 @@ use Illuminate\Support\Facades\Cache;
 class ShipmentController extends Controller
 {
     private $shipmentsRepo;
+    private $shipmentFileRepo;
 
     public function __construct()
     {
         $this->shipmentsRepo = new ShipmentsRepository();
+        $this->shipmentFileRepo = new ShipmentFileRepository();
     }
     /**
      * Display a listing of the resource.
@@ -54,12 +57,15 @@ class ShipmentController extends Controller
                 dd('Its a picture');
             }elseif(in_array($document->getMimeType(),$fileTypes)){
 
+                $shipmentId = $shipment->id;
+
                 $extension = $document->getClientOriginalExtension();
 
                 $fileName = uniqid().".".$extension;
 
-                $path = $document->storeAs("documents/{$shipment->id}",$fileName,'public');
-                dd($path);
+                $path = $document->storeAs("documents/{$shipmentId}",$fileName,'public');
+
+                $this->shipmentFileRepo->createNew($fileName,$shipmentId,'document');
 
             }else{
                 dd('Not allowed');

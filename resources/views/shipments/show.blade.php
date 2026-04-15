@@ -24,7 +24,11 @@
                     <strong>To:</strong><br>
                     {{$shipment->to_city}}, {{$shipment->to_country}}
                 </div>
+
+                
             </div>
+
+            
 
             <hr>
 

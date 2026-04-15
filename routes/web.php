@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShipmentController;
+use App\Http\Controllers\ShipmentFileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,5 +23,7 @@ Route::middleware('auth')->group(function () {
 Route::resource('/', ShipmentController::class);
 
 Route::resource('shipments', ShipmentController::class);
+
+Route::get('shipment-files/show/{shipment}', [ShipmentFileController::class, 'show'])->name('shipment.files.show');
 
 require __DIR__.'/auth.php';

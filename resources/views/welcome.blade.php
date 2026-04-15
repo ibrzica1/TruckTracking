@@ -25,6 +25,10 @@
                         <p class="text-muted small">
                             {{$shipment->from_city}} → {{$shipment->to_city}}
                         </p>
+
+                        <a href="{{route('shipment.files.show',['shipment' => $shipment->id])}}" class="btn btn-primary">
+                            Show Files
+                        </a>
                     </div>
                 </div>
             </div>
