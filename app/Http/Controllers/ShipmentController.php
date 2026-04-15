@@ -42,6 +42,8 @@ class ShipmentController extends Controller
      */
     public function store(SaveShipmentRequest $request)
     {
+        $shipment = $this->shipmentsRepo->createNew($request->validated());
+
         $fileTypes = [
             'application/pdf',
             'application/msword',
@@ -51,12 +53,19 @@ class ShipmentController extends Controller
             if(str_starts_with($document->getMimeType(),'image/') ){
                 dd('Its a picture');
             }elseif(in_array($document->getMimeType(),$fileTypes)){
-                dd('Its a document');
+
+                $extension = $document->getClientOriginalExtension();
+
+                $fileName = uniqid().".".$extension;
+
+                $path = $document->storeAs("documents/{$shipment->id}",$fileName,'public');
+                dd($path);
+
             }else{
                 dd('Not allowed');
             }
         }
-        $this->shipmentsRepo->createNew($request->validated());
+        
         return redirect()->route('shipments.index');
     }
 

@@ -15,7 +15,7 @@ class ShipmentsRepository
 
    public function createNew($request)
     {
-        $this->shipmentModel->create([
+        $shipment = $this->shipmentModel->create([
             'title' => $request['title'],
             'from_city' => $request['from_city'],
             'from_country' => $request['from_country'],
@@ -26,6 +26,8 @@ class ShipmentsRepository
             'user_id' => $request['user_id'],
             'details' => $request['details'],
         ]);
+
+        return $shipment;
     }
 
 }
