@@ -10,6 +10,7 @@ use App\Repositories\ShipmentFileRepository;
 use App\Repositories\ShipmentsRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use App\Models\ShipmentFile;
 
 class ShipmentController extends Controller
 {
@@ -80,7 +81,11 @@ class ShipmentController extends Controller
      */
     public function show(Shipment $shipment)
     {
-        return view('shipments.show', compact('shipment'));
+        $shipmentFiles = [];
+
+        $shipmentFiles = ShipmentFile::where('shipment_id',$shipment->id)->get();
+
+        return view('shipments.show', compact('shipment','shipmentFiles'));
     }
 
     /**

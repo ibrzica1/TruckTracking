@@ -26,8 +26,8 @@
                             {{$shipment->from_city}} → {{$shipment->to_city}}
                         </p>
 
-                        <a href="{{route('shipment.files.show',['shipment' => $shipment->id])}}" class="btn btn-primary">
-                            Show Files
+                        <a href="{{route('shipments.show',['shipment' => $shipment->id])}}" class="btn btn-primary">
+                            Show Shipment
                         </a>
                     </div>
                 </div>

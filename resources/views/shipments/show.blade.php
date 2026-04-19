@@ -59,6 +59,10 @@
                 {{$shipment->details ?? 'No details provided.'}}
             </p>
 
+            @foreach($shipmentFiles as $shipmentFile)
+                <p>{{$shipmentFile->file_name}}</p>
+            @endforeach
+
         </div>
     </div>
 </div>
