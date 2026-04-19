@@ -5,6 +5,7 @@ namespace App\Models;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 use function PHPUnit\Framework\throwException;
 
@@ -35,6 +36,15 @@ class Shipment extends Model
         self::STATUS_IN_PROGRESS, self::UNNASIGNED,
         self::COMPLETED, self::PROBLEM
     ];
+
+    public static function booted()
+    {
+        static::created(function($shipment) {
+            if($shipment->status === self::UNNASIGNED){
+                Cache::forget('unnasignedShipments');
+            }
+        });
+    }
 
     public function setStatusAttribute($status)
     {
