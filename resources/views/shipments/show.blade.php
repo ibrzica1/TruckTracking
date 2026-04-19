@@ -59,8 +59,18 @@
                 {{$shipment->details ?? 'No details provided.'}}
             </p>
 
+            /* My way
             @foreach($shipment->files as $shipmentFile)
                 <a href="{{route('shipment.files.show',['shipmentFile' => $shipmentFile->id])}}">
+                    {{$shipmentFile->file_name}}
+                </a>
+            @endforeach  
+
+            <p>___________________________</p>
+
+            // Right way
+            @foreach($shipment->files as $shipmentFile)
+                <a href="/storage/documents/{{$shipmentFile->file_name}}">
                     {{$shipmentFile->file_name}}
                 </a>
             @endforeach

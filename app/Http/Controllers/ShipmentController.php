@@ -11,9 +11,12 @@ use App\Repositories\ShipmentsRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use App\Models\ShipmentFile;
+use App\Traits\ImageUpload;
 
 class ShipmentController extends Controller
 {
+    use ImageUpload;
+
     private $shipmentsRepo;
     private $shipmentFileRepo;
 
@@ -55,7 +58,12 @@ class ShipmentController extends Controller
         ];
         foreach($request->file('documents') as $document){
             if(str_starts_with($document->getMimeType(),'image/') ){
-                dd('Its a picture');
+                
+                $name = $this->uploadImage($document,'documents/'.$shipment->id);
+                $path = $shipment->id.'/'.$name;
+
+                $this->shipmentFileRepo->createNew($path,$shipment->id,'image');
+
             }elseif(in_array($document->getMimeType(),$fileTypes)){
 
                 $shipmentId = $shipment->id;
