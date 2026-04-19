@@ -81,11 +81,7 @@ class ShipmentController extends Controller
      */
     public function show(Shipment $shipment)
     {
-        $shipmentFiles = [];
-
-        $shipmentFiles = ShipmentFile::where('shipment_id',$shipment->id)->get();
-
-        return view('shipments.show', compact('shipment','shipmentFiles'));
+        return view('shipments.show', compact('shipment'));
     }
 
     /**

@@ -45,4 +45,9 @@ class Shipment extends Model
         $this->attributes['status'] = $status;
     }
 
+    public function files()
+    {
+        return $this->hasMany(ShipmentFile::class,'shipment_id','id');
+    }
+
 }
