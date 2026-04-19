@@ -24,6 +24,6 @@ Route::resource('/', ShipmentController::class);
 
 Route::resource('shipments', ShipmentController::class);
 
-Route::get('shipment-files/show/{shipment}', [ShipmentFileController::class, 'show'])->name('shipment.files.show');
+Route::get('shipment-files/show/{shipmentFile}', [ShipmentController::class, 'showFile'])->name('shipment.files.show');
 
 require __DIR__.'/auth.php';

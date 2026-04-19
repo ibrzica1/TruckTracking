@@ -13,10 +13,10 @@ class ShipmentFileRepository
         $this->shipmentFileModel = new ShipmentFile();
     }
 
-    public function createNew($fileName,$shipmentId,$type)
+    public function createNew($path,$shipmentId,$type)
     {
         $shipmentFile = $this->shipmentFileModel::create([
-            'file_name' => $fileName,
+            'file_name' => $path,
             'shipment_id' => $shipmentId,
             'type' => $type,
         ]);

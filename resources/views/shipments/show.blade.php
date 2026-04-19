@@ -60,7 +60,9 @@
             </p>
 
             @foreach($shipment->files as $shipmentFile)
-                <p>{{$shipmentFile->file_name}}</p>
+                <a href="{{route('shipment.files.show',['shipmentFile' => $shipmentFile->id])}}">
+                    {{$shipmentFile->file_name}}
+                </a>
             @endforeach
 
         </div>

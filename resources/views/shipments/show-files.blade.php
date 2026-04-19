@@ -1,3 +1,6 @@
-@foreach($shipmentFiles as $shipmentFile)
-    <p>{{$shipmentFile->file_name}}</p>
-@endforeach
+
+<iframe 
+    src="{{ asset('storage/documents/'.$shipmentFile->file_name) }}" 
+    width="100%" 
+    height="600px">
+</iframe>

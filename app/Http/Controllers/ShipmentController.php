@@ -65,8 +65,9 @@ class ShipmentController extends Controller
                 $fileName = uniqid().".".$extension;
 
                 $path = $document->storeAs("documents/{$shipmentId}",$fileName,'public');
+                $path = str_replace('documents/',"",$path);
 
-                $this->shipmentFileRepo->createNew($fileName,$shipmentId,'document');
+                $this->shipmentFileRepo->createNew($path,$shipmentId,'document');
 
             }else{
                 dd('Not allowed');
@@ -84,9 +85,11 @@ class ShipmentController extends Controller
         return view('shipments.show', compact('shipment'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    public function showFile(ShipmentFile $shipmentFile)
+    {
+        return view('shipments.show-files', compact('shipmentFile'));
+    }
+   
     public function edit(Shipment $shipments)
     {
         //
