@@ -28,8 +28,6 @@ class SaveShipmentRequest extends FormRequest
 
             'status' => 'required|in:in_progress,unnasigned,completed,problem',
 
-            'user_id' => 'required|exists:users,id',
-
             'details' => 'nullable|string',
 
             'documents' => 'required|array',

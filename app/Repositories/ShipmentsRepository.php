@@ -23,7 +23,6 @@ class ShipmentsRepository
             'to_country' => $request['to_country'],
             'price' => $request['price'],
             'status' => $request['status'],
-            'user_id' => $request['user_id'],
             'details' => $request['details'],
         ]);
 

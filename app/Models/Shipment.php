@@ -23,7 +23,6 @@ class Shipment extends Model
         'to_country',
         'price',
         'status',
-        'user_id',
         'details'
     ];
 

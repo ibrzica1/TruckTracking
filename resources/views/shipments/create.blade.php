@@ -61,11 +61,6 @@
                 <input type="file" name="documents[]" class="form-control" required multiple>
             </div>
 
-            <div class="col-md-6 mb-3">
-                <label class="form-label">User ID</label>
-                <input type="number" name="user_id" class="form-control" required>
-            </div>
-
             <div class="col-12 mb-3">
                 <label class="form-label">Details</label>
                 <textarea name="details" class="form-control" rows="4"></textarea>
