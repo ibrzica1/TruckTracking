@@ -98,9 +98,9 @@ class ShipmentController extends Controller
         return view('shipments.show-files', compact('shipmentFile'));
     }
    
-    public function edit(Shipment $shipments)
+    public function edit(Shipment $shipment)
     {
-        //
+        return view('shipments.edit', compact('shipment'));
     }
 
     /**
@@ -108,7 +108,7 @@ class ShipmentController extends Controller
      */
     public function update(Request $request, Shipment $shipments)
     {
-        //
+        dd($request);
     }
 
     /**
