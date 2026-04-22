@@ -30,6 +30,9 @@
             </div>
 
             <div class="col-md-6 mb-3">
+                @if($errors->has('user_id'))
+                    <p>{{$errors->first()}}</p>
+                @endif
                 <label class="form-label">Driver ID</label>
                 <input type="number" name="user_id" class="form-control" required value="{{$shipment->user_id}}">
             </div>

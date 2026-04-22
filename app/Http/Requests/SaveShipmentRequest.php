@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\UserClient;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,6 +26,11 @@ class SaveShipmentRequest extends FormRequest
             'to_country' => 'required|string|max:255',
 
             'price' => 'required|numeric|min:0',
+            'user_id' => [
+                'required',
+                'numeric',
+                new UserClient()
+            ],
 
             'status' => 'required|in:in_progress,unnasigned,completed,problem',
 

@@ -27,6 +27,14 @@
             </div>
 
             <div class="col-md-6 mb-3">
+                @if($errors->has('user_id'))
+                    <p>{{$errors->first()}}</p>
+                @endif
+                <label class="form-label">Client ID</label>
+                <input type="number" name="user_id" class="form-control" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
                 <label class="form-label">From City</label>
                 <input type="text" name="from_city" class="form-control" required>
             </div>
