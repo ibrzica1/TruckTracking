@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SaveShipmentRequest;
+use App\Http\Requests\UpdateShipmentRequest;
 use App\Models\Shipment;
 use App\Repositories\ShipmentFileRepository;
 use App\Repositories\ShipmentsRepository;
@@ -106,9 +107,10 @@ class ShipmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Shipment $shipments)
+    public function update(UpdateShipmentRequest $request, Shipment $shipment)
     {
-        dd($request);
+        $shipment->update($request->validated());
+        return redirect()->back();
     }
 
     /**

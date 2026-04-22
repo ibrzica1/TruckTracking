@@ -30,6 +30,11 @@
             </div>
 
             <div class="col-md-6 mb-3">
+                <label class="form-label">Driver ID</label>
+                <input type="number" name="user_id" class="form-control" required value="{{$shipment->user_id}}">
+            </div>
+
+            <div class="col-md-6 mb-3">
                 <label class="form-label">From City</label>
                 <input type="text" name="from_city" class="form-control" required value="{{$shipment->from_city}}">
             </div>
