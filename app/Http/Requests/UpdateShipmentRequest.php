@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\User;
+use App\Rules\UserDriver;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -23,9 +24,7 @@ class UpdateShipmentRequest extends FormRequest
             'user_id' => [
                 'required',
                 'numeric',
-                Rule::exists('users','id')->where(function($query){
-                    $query->where('role',User::DRIVER);
-                }),
+                new UserDriver()
             ],
 
             'price' => 'required|numeric|min:0',
