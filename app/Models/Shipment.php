@@ -21,7 +21,8 @@ class Shipment extends Model
         'from_country',
         'to_city',
         'to_country',
-        'user_id',
+        'user_id', 
+        'client_id',
         'price',
         'status',
         'details'

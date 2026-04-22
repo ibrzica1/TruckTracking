@@ -26,7 +26,7 @@ class SaveShipmentRequest extends FormRequest
             'to_country' => 'required|string|max:255',
 
             'price' => 'required|numeric|min:0',
-            'user_id' => [
+            'client_id' => [
                 'required',
                 'numeric',
                 new UserClient()

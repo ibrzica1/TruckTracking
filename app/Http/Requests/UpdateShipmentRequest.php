@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\User;
+use App\Rules\UserClient;
 use App\Rules\UserDriver;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -25,6 +26,12 @@ class UpdateShipmentRequest extends FormRequest
                 'required',
                 'numeric',
                 new UserDriver()
+            ],
+
+            'client_id' => [
+                'required',
+                'numeric',
+                new UserClient()
             ],
 
             'price' => 'required|numeric|min:0',

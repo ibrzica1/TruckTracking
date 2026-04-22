@@ -22,7 +22,7 @@ class ShipmentsRepository
             'to_city' => $request['to_city'],
             'to_country' => $request['to_country'],
             'price' => $request['price'],
-            'user_id' => $request['user_id'],
+            'client_id' => $request['client_id'],
             'status' => $request['status'],
             'details' => $request['details'],
         ]);

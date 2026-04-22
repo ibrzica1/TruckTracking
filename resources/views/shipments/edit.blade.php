@@ -31,10 +31,18 @@
 
             <div class="col-md-6 mb-3">
                 @if($errors->has('user_id'))
-                    <p>{{$errors->first()}}</p>
+                    <p>{{$errors->first('user_id')}}</p>
                 @endif
                 <label class="form-label">Driver ID</label>
                 <input type="number" name="user_id" class="form-control" required value="{{$shipment->user_id}}">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                @if($errors->has('client_id'))
+                    <p>{{$errors->first('client_id')}}</p>
+                @endif
+                <label class="form-label">Client ID</label>
+                <input type="number" name="client_id" class="form-control" requiredvalue="{{$shipment->client_id}}">
             </div>
 
             <div class="col-md-6 mb-3">
