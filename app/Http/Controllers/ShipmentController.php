@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use App\Models\ShipmentFile;
 use App\Traits\ImageUpload;
+use Illuminate\Support\Facades\Gate;
 
 class ShipmentController extends Controller
 {
@@ -50,6 +51,8 @@ class ShipmentController extends Controller
      */
     public function store(SaveShipmentRequest $request)
     {
+        Gate::authorize('create', Shipment::class);
+        
         $shipment = $this->shipmentsRepo->createNew($request->validated());
 
         $fileTypes = [
