@@ -43,6 +43,7 @@ class ShipmentController extends Controller
      */
     public function create()
     {
+        Gate::authorize('viewCreate', Shipment::class);
         return view('shipments.create');
     }
 
@@ -52,7 +53,7 @@ class ShipmentController extends Controller
     public function store(SaveShipmentRequest $request)
     {
         Gate::authorize('create', Shipment::class);
-        
+
         $shipment = $this->shipmentsRepo->createNew($request->validated());
 
         $fileTypes = [

@@ -7,7 +7,7 @@ use App\Models\Shipment;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class ShipmentPolucy
+class ShipmentPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -63,5 +63,11 @@ class ShipmentPolucy
     public function forceDelete(User $user, Shipment $shipment): bool
     {
         return false;
+    }
+
+    public function viewCreate(User $user): bool
+    {
+        
+        return $user->role === User::ADMIN;
     }
 }
