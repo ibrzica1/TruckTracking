@@ -137,6 +137,7 @@ class ShipmentController extends Controller
     {
         $request->validate(['user_id' => 'required|exists:users,id']);
         $shipment->user_id = $request->user_id;
+        $shipment->status = Shipment::STATUS_IN_PROGRESS;
         $shipment->save();
 
         return redirect()->back();
