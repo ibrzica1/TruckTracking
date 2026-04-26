@@ -29,6 +29,19 @@
                         <a href="{{route('shipments.show',['shipment' => $shipment->id])}}" class="btn btn-primary">
                             Show Shipment
                         </a>
+
+                        <form action="{{route('shipment.assign.user', ['shipment' => $shipment->id])}}" 
+                        method="post">
+                            @csrf
+                            <input type="hidden" value="{{$shipment->id}}" name="shipment_id">
+                            <select name="user_id" class="form-select" aria-label="Default select example">
+                            <option selected disabled>Open this select menu</option>
+                            @foreach($users as $user)
+                                <option value="{{$user->id}}">{{$user->name}}</option>
+                            @endforeach
+                            </select>
+                            <button type='submit' class="btn btn-primary">Assign User</button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -12,6 +12,7 @@ use App\Repositories\ShipmentsRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use App\Models\ShipmentFile;
+use App\Models\User;
 use App\Traits\ImageUpload;
 use Illuminate\Support\Facades\Gate;
 
@@ -32,10 +33,15 @@ class ShipmentController extends Controller
      */
     public function index()
     {
-        $shipments = Cache::remember('unnasignedShipments',300,function() {
-            return Shipment::where('status',Shipment::UNNASIGNED)->get();
+        $shipments = Cache::remember('unnasignedShipments',300,
+        function() {
+            return Shipment::unnasignedShipments()->get();
         });
-        return  view('welcome',compact('shipments'));   
+        $users = Cache::remember('users',300,
+        function() {
+            return User::all();
+        });
+        return  view('welcome',compact('shipments','users'));   
     }
 
     /**
@@ -95,6 +101,7 @@ class ShipmentController extends Controller
      */
     public function show(Shipment $shipment)
     {
+        Gate::authorize('view', $shipment);
         return view('shipments.show', compact('shipment'));
     }
 
@@ -105,6 +112,7 @@ class ShipmentController extends Controller
    
     public function edit(Shipment $shipment)
     {
+        Gate::authorize('viewEdit', Shipment::class);
         return view('shipments.edit', compact('shipment'));
     }
 
@@ -123,5 +131,14 @@ class ShipmentController extends Controller
     public function destroy(Shipment $shipments)
     {
         //
+    }
+
+    public function assignUser(Shipment $shipment, Request $request)
+    {
+        $request->validate(['user_id' => 'required|exists:users,id']);
+        $shipment->user_id = $request->user_id;
+        $shipment->save();
+
+        return redirect()->back();
     }
 }

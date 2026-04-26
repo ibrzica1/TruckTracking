@@ -23,6 +23,8 @@ Route::middleware('auth')->group(function () {
 Route::resource('/', ShipmentController::class);
 
 Route::resource('shipments', ShipmentController::class);
+Route::post('/shipments/{shipment}/assignUser',[ShipmentController::class,'assignUser'])
+->name('shipment.assign.user');
 
 Route::get('shipment-files/show/{shipmentFile}', [ShipmentController::class, 'showFile'])->name('shipment.files.show');
 
