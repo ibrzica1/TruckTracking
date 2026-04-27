@@ -19,17 +19,27 @@ new class extends Component
             $this->addError('subtrack', 'Result cant be below 0');
         }
     }
+
+    public function validateAmount(){
+        if($this->amount < 1){
+            $this->addError('validateAmount', 'Amount cant be below 1');
+        }
+    }
 };
 ?>
 
 <div>
-    @error('subtrack')
+    @error('validateAmount')
         <p>{{$message}}</p>
     @enderror
     
-    <p>Clicked Times: {{$count}}</p>
+    <p>Clicked Times: <span class="{{$count>500 ? 'red' : ''}}">{{$count}}</span></p>
     <button wire:click="increment">Add</button>
     <button wire:click="subtrack">Subtrack</button>
-    <input type="number" min=1 wire:model.live="amount">
+    <input type="number" min=1 wire:blur='validateAmount' wire:model.live="amount">
     <p>Amount: {{$amount}}</p>
+
+    <style>
+        .red {color: red;}
+    </style>
 </div>
