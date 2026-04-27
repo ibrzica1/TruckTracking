@@ -51,4 +51,6 @@
     </div>
 </div>
 
+@livewire('shipments-assigned-list')
+
 @endsection
