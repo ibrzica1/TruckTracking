@@ -29,7 +29,7 @@ new class extends Component
 ?>
 
 <div>
-    @error('validateAmount')
+    @error('subtrack')
         <p>{{$message}}</p>
     @enderror
     
