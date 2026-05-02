@@ -19,14 +19,14 @@ class SaveShipmentRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
 
-            'from_city' => 'required|string|max:255',
-            'from_country' => 'required|string|max:255',
+            'fromCity' => 'required|string|max:255',
+            'fromCountry' => 'required|string|max:255',
 
-            'to_city' => 'required|string|max:255',
-            'to_country' => 'required|string|max:255',
+            'toCity' => 'required|string|max:255',
+            'toCountry' => 'required|string|max:255',
 
             'price' => 'required|numeric|min:0',
-            'client_id' => [
+            'clientId' => [
                 'required',
                 'numeric',
                 new UserClient()
@@ -38,7 +38,7 @@ class SaveShipmentRequest extends FormRequest
 
             'documents' => 'required|array',
 
-            'document.*' => 'file|mimes:jpg,jpeg,png,webp,pdf,doc,docx|max:10240'
+            'documents.*' => 'file|mimes:jpg,jpeg,png,webp,pdf,doc,docx|max:10240'
         ];
     }
 }

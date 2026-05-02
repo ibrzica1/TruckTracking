@@ -17,12 +17,12 @@ class ShipmentsRepository
     {
         $shipment = $this->shipmentModel->create([
             'title' => $request['title'],
-            'from_city' => $request['from_city'],
-            'from_country' => $request['from_country'],
-            'to_city' => $request['to_city'],
-            'to_country' => $request['to_country'],
+            'from_city' => $request['fromCity'],
+            'from_country' => $request['fromCountry'],
+            'to_city' => $request['toCity'],
+            'to_country' => $request['toCountry'],
             'price' => $request['price'],
-            'client_id' => $request['client_id'],
+            'client_Id' => $request['clientId'],
             'status' => $request['status'],
             'details' => $request['details'],
         ]);

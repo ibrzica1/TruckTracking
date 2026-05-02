@@ -1,11 +1,16 @@
 <?php
 
+use App\Http\Requests\SaveShipmentRequest;
 use App\Models\Shipment;
 use App\Models\User;
+use App\Services\ShipmentService;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 new class extends Component
 {
+    use WithFileUploads;
+
     public string $title;
 
     public string $fromCity;
@@ -47,9 +52,13 @@ new class extends Component
         
     }
 
-    public function submit()
+    public function submit(ShipmentService $shipmentService)
     {
+        $request = new SaveShipmentRequest();
 
+        $data = $this->validate($request->rules());
+
+        $shipmentService->store($data);
     }
 };
 ?>
@@ -58,6 +67,10 @@ new class extends Component
     
     <form action="{{ route('shipments.store') }}" method="POST"  
     wire:submit="submit" class="container mt-4" enctype="multipart/form-data">
+
+        @foreach ($errors->all() as $error)
+            <p>{{$error}}</p>
+        @endforeach
 
         <h1 class="mb-4">Create Shipment</h1>
 
